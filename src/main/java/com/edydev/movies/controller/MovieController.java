@@ -34,10 +34,17 @@ public class MovieController {
         return new ResponseEntity<Optional<Movie>>(movieService.singleMovie(id), HttpStatus.OK);
     }
 
-    @PostMapping("/new")
-    public ResponseEntity<String> createMovie(@RequestBody String title, String releaseDate, String poster, List<String> genres) {
-        return new ResponseEntity<String>(movieService.createMovie(title, releaseDate, poster, genres), HttpStatus.OK);
-    }
+    // I couldn't get this method to work
+    // @PostMapping("/new")
+    // public ResponseEntity<String> createMovie(@RequestBody Movie movie) {
+    //     return new ResponseEntity<String>(
+    //         movieService.createMovie(
+    //             movie.getTitle(), 
+    //             movie.getReleaseDate(),
+    //             movie.getPoster(), 
+    //             movie.getGenres()
+    //             ), HttpStatus.OK);
+    // }
 
 
 }

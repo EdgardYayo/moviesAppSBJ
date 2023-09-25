@@ -7,6 +7,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.DocumentReference;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,7 +30,13 @@ public class Movie {
     @DocumentReference
     private List<Review> reviewIds;
 
-    public Movie(String title, String releaseDate, String poster, List<String> genres){
+    @JsonCreator
+    public Movie(
+        @JsonProperty("title") String title, 
+        @JsonProperty("releaseDate") String releaseDate, 
+        @JsonProperty("poster") String poster, 
+        @JsonProperty("genres") List<String> genres
+    ){
         this.title = title;
         this.releaseDate = releaseDate;
         this.poster = poster;
